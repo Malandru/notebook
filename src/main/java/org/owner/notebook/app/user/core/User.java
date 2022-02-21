@@ -2,6 +2,7 @@ package org.owner.notebook.app.user.core;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.owner.notebook.app.account.core.Account;
+import org.owner.notebook.app.sheet.core.Sheet;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -29,6 +30,9 @@ public class User implements UserDetails
 
     @OneToMany(mappedBy = "user")
     private List<Account> accounts;
+
+    @OneToMany(mappedBy = "user")
+    private List<Sheet> sheets;
 
     @Column(name = "account_locked", columnDefinition = "BOOLEAN DEFAULT false")
     private boolean accountLocked;
@@ -91,6 +95,16 @@ public class User implements UserDetails
     public void setAccounts(List<Account> accounts)
     {
         this.accounts = accounts;
+    }
+
+    public List<Sheet> getSheets()
+    {
+        return sheets;
+    }
+
+    public void setSheets(List<Sheet> sheets)
+    {
+        this.sheets = sheets;
     }
 
     public boolean isAccountLocked()
