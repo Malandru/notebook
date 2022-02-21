@@ -1,7 +1,7 @@
-package org.owner.finances.notebook.core.user;
+package org.owner.notebook.app.user.core;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.owner.finances.notebook.core.account.Account;
+import org.owner.notebook.app.account.core.Account;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

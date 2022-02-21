@@ -1,8 +1,8 @@
-package org.owner.finances.notebook.core.account;
+package org.owner.notebook.app.account.core;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.owner.finances.notebook.core.user.User;
+import org.owner.notebook.app.user.core.User;
 
 import javax.persistence.*;
 
@@ -25,7 +25,6 @@ public class Account
     @Column(nullable = false)
     private double balance;
 
-    @JsonIgnore
     public Integer getAccountID()
     {
         return accountID;

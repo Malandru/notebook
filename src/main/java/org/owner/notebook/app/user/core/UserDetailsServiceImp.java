@@ -1,4 +1,4 @@
-package org.owner.finances.notebook.core.user;
+package org.owner.notebook.app.user.core;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

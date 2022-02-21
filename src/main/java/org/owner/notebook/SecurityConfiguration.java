@@ -1,6 +1,6 @@
-package org.owner.finances.notebook;
+package org.owner.notebook;
 
-import org.owner.finances.notebook.core.user.UserDetailsServiceImp;
+import org.owner.notebook.app.user.core.UserDetailsServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

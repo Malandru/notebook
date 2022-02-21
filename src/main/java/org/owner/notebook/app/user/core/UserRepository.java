@@ -1,4 +1,4 @@
-package org.owner.finances.notebook.core.user;
+package org.owner.notebook.app.user.core;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
