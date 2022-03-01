@@ -15,6 +15,7 @@ public class Sheet
     private Long sheetID;
 
     @ManyToOne
+    @JoinColumn(name = "id_user", nullable = false)
     private User user;
 
     @Column(name = "sheet_name", nullable = false)

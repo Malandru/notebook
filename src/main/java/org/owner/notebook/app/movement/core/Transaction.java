@@ -1,19 +1,22 @@
 package org.owner.notebook.app.movement.core;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 @MappedSuperclass
 public abstract class Transaction
 {
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     protected Category category;
+
+    @Column(nullable = false)
     protected String concept;
+
+    @Column(nullable = false)
     protected Double amount;
 
     @ManyToOne
+    @JoinColumn(name = "tag_id")
     protected Tag tag;
 
     public Category getCategory()

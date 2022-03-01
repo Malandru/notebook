@@ -9,6 +9,8 @@ public class Tag
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tag")
     private Long tagID;
+
+    @Column(nullable = false)
     private String value;
 
     public Long getTagID()

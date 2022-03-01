@@ -14,9 +14,11 @@ public class Movement extends Transaction
     private Long movementID;
 
     @ManyToOne
+    @JoinColumn(name = "sheet_id", nullable = false)
     private Sheet sheet;
 
     @ManyToOne
+    @JoinColumn(name = "account_id", nullable = false)
     private Account account;
 
     @Column(nullable = false)

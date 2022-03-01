@@ -14,11 +14,13 @@ public class BudgetItem extends Transaction
     private Long itemID;
 
     @ManyToOne
+    @JoinColumn(name = "budget_id", nullable = false)
     private Budget budget;
 
+    @Column(name = "month_day", nullable = false)
     private int monthDay;
 
-    @Column(name = "end_date", nullable = false)
+    @Column(name = "year_date", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date yearDate;
 

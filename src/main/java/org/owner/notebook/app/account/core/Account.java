@@ -15,7 +15,7 @@ public class Account
     private Integer accountID;
 
     @ManyToOne
-    @JoinColumn(name = "id_user")
+    @JoinColumn(name = "id_user", nullable = false)
     @JsonBackReference
     private User user;
 
