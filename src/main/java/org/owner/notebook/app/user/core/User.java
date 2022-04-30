@@ -1,13 +1,12 @@
 package org.owner.notebook.app.user.core;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.owner.notebook.app.account.core.Account;
-import org.owner.notebook.app.sheet.core.Sheet;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,12 +28,10 @@ public class User implements UserDetails
     @Column(nullable = false)
     private String password;
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_roles",
-            joinColumns = @JoinColumn(name = "id_user", referencedColumnName = "id_user"),
-            inverseJoinColumns = @JoinColumn(name = "id_role", referencedColumnName = "id_role")
-    )
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @Enumerated(EnumType.ORDINAL)
+    @CollectionTable(name = "roles")
+    @Column(name = "role", nullable = false)
     private List<Role> roles;
 
     @Column(name = "account_locked", columnDefinition = "BOOLEAN DEFAULT false")
@@ -46,6 +43,13 @@ public class User implements UserDetails
     {
         this.enabled = true;
         this.accountLocked = false;
+    }
+
+    public void addRole(Role role)
+    {
+        if (this.roles == null)
+            this.roles = new ArrayList<>();
+        this.roles.add(role);
     }
 
     @JsonIgnore
@@ -112,7 +116,7 @@ public class User implements UserDetails
     @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities()
     {
-        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getRole())).collect(Collectors.toList());
+        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getRoleName())).collect(Collectors.toList());
     }
 
     @Override
