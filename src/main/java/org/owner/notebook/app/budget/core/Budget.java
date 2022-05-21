@@ -1,5 +1,7 @@
 package org.owner.notebook.app.budget.core;
 
+import org.owner.notebook.app.user.core.User;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +19,10 @@ public class Budget
 
     @OneToMany(mappedBy = "budget")
     private List<BudgetItem> budgetItems;
+
+    @ManyToOne
+    @JoinColumn(name = "id_user", nullable = false)
+    private User user;
 
     @Column(name = "start_date", nullable = false)
     @Temporal(TemporalType.DATE)
@@ -39,6 +45,16 @@ public class Budget
     public String getBudgetName()
     {
         return budgetName;
+    }
+
+    public User getUser()
+    {
+        return user;
+    }
+
+    public void setUser(User user)
+    {
+        this.user = user;
     }
 
     public void setBudgetName(String budgetName)
