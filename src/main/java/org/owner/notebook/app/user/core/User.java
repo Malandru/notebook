@@ -1,6 +1,7 @@
 package org.owner.notebook.app.user.core;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,15 +10,17 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Entity(name = "users")
 public class User implements UserDetails
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id_user")
-    private Integer userID;
+    private UUID userID;
 
     @Column(unique = true, nullable = false)
     private String username;
@@ -53,12 +56,12 @@ public class User implements UserDetails
     }
 
     @JsonIgnore
-    public Integer getUserID()
+    public UUID getUserID()
     {
         return userID;
     }
 
-    public void setUserID(Integer userID)
+    public void setUserID(UUID userID)
     {
         this.userID = userID;
     }
