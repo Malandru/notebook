@@ -55,7 +55,6 @@ public class User implements UserDetails
         this.roles.add(role);
     }
 
-    @JsonIgnore
     public UUID getUserID()
     {
         return userID;

@@ -14,7 +14,7 @@ public class BudgetItem extends Transaction
     private Long itemID;
 
     @ManyToOne
-    @JoinColumn(name = "budget_id", nullable = false)
+    @JoinColumn(name = "id_budget", nullable = false)
     private Budget budget;
 
     @Column(name = "month_day", nullable = false)

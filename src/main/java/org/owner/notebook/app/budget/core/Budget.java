@@ -1,24 +1,24 @@
 package org.owner.notebook.app.budget.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.GenericGenerator;
 import org.owner.notebook.app.user.core.User;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
+import java.util.UUID;
 
 @Entity(name = "budgets")
 public class Budget
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id_budget")
-    private Long budgetID;
+    private UUID budgetID;
 
     @Column(name = "budget_name", nullable = false)
     private String budgetName;
-
-    @OneToMany(mappedBy = "budget")
-    private List<BudgetItem> budgetItems;
 
     @ManyToOne
     @JoinColumn(name = "id_user", nullable = false)
@@ -32,12 +32,12 @@ public class Budget
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
-    public Long getBudgetID()
+    public UUID getBudgetID()
     {
         return budgetID;
     }
 
-    public void setBudgetID(Long budgetID)
+    public void setBudgetID(UUID budgetID)
     {
         this.budgetID = budgetID;
     }
@@ -47,6 +47,7 @@ public class Budget
         return budgetName;
     }
 
+    @JsonIgnore
     public User getUser()
     {
         return user;
@@ -60,16 +61,6 @@ public class Budget
     public void setBudgetName(String budgetName)
     {
         this.budgetName = budgetName;
-    }
-
-    public List<BudgetItem> getBudgetItems()
-    {
-        return budgetItems;
-    }
-
-    public void setBudgetItems(List<BudgetItem> budgetItems)
-    {
-        this.budgetItems = budgetItems;
     }
 
     public Date getStartDate()
