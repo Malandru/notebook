@@ -1,11 +1,8 @@
 package org.owner.notebook.app.budget.core;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.owner.notebook.domain.utils.DateUtils;
 import org.owner.notebook.domain.request.types.CreateRequest;
 import org.owner.notebook.domain.request.types.DeleteRequest;
 import org.owner.notebook.domain.request.types.UpdateRequest;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -24,13 +21,9 @@ public class BudgetRequest
     private UUID userID;
 
     @NotNull(groups = {CreateRequest.class})
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateUtils.DATE_FORMAT_REQUEST)
-    @DateTimeFormat(pattern = DateUtils.DATE_FORMAT_REQUEST)
     private Date startDate;
 
     @NotNull(groups = {CreateRequest.class})
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateUtils.DATE_FORMAT_REQUEST)
-    @DateTimeFormat(pattern = DateUtils.DATE_FORMAT_REQUEST)
     private Date endDate;
 
     public UUID getBudgetID()

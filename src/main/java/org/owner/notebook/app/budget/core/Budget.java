@@ -1,10 +1,8 @@
 package org.owner.notebook.app.budget.core;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 import org.owner.notebook.app.user.core.User;
-import org.owner.notebook.domain.utils.DateUtils;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -28,12 +26,10 @@ public class Budget
 
     @Column(name = "start_date", nullable = false)
     @Temporal(TemporalType.DATE)
-    @JsonFormat(pattern = DateUtils.DATE_FORMAT_DB)
     private Date startDate;
 
     @Column(name = "end_date", nullable = false)
     @Temporal(TemporalType.DATE)
-    @JsonFormat(pattern = DateUtils.DATE_FORMAT_DB)
     private Date endDate;
 
     public UUID getBudgetID()
