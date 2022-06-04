@@ -1,6 +1,5 @@
 package org.owner.notebook.app.budget.core;
 
-import org.owner.notebook.app.movement.core.TransactionRequest;
 import org.owner.notebook.domain.request.types.CreateRequest;
 import org.owner.notebook.domain.request.types.DeleteRequest;
 import org.owner.notebook.domain.request.types.DetailsRequest;
@@ -11,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.UUID;
 
-public class BudgetRequest extends TransactionRequest
+public class BudgetRequest
 {
     @NotNull(groups = {UpdateRequest.class, DeleteRequest.class, DetailsRequest.class})
     private UUID budgetID;
