@@ -35,6 +35,7 @@ public class SummaryService
         BudgetSummary budgetSummary = new BudgetSummary(budget);
         budgetSummary.setExtraordinaryItems(budgetItemRepository.findByBudgetAndYearDateNotNull(budget));
         budgetSummary.setMonthlyItems(budgetItemRepository.findByBudgetAndMonthDayNotNull(budget));
+        budgetSummary.calculateTotals();
         return budgetSummary;
     }
 
