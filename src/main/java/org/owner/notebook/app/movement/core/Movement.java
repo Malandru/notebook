@@ -8,11 +8,6 @@ import javax.persistence.*;
 @Entity(name = "movements")
 public class Movement extends Transaction
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_movement")
-    private Long movementID;
-
     @ManyToOne
     @JoinColumn(name = "sheet_id", nullable = false)
     private Sheet sheet;
@@ -24,16 +19,6 @@ public class Movement extends Transaction
     @Column(nullable = false)
     private Boolean realized;
     private String comment;
-
-    public Long getMovementID()
-    {
-        return movementID;
-    }
-
-    public void setMovementID(Long movementID)
-    {
-        this.movementID = movementID;
-    }
 
     public Sheet getSheet()
     {

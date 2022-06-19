@@ -1,10 +1,19 @@
 package org.owner.notebook.app.movement.core;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
+import java.util.UUID;
 
 @MappedSuperclass
 public abstract class Transaction
 {
+    @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "id_transaction")
+    protected UUID transactionID;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     protected Category category;
@@ -18,6 +27,16 @@ public abstract class Transaction
     @ManyToOne
     @JoinColumn(name = "tag_id")
     protected Tag tag;
+
+    public UUID getTransactionID()
+    {
+        return transactionID;
+    }
+
+    public void setTransactionID(UUID transactionID)
+    {
+        this.transactionID = transactionID;
+    }
 
     public Category getCategory()
     {
