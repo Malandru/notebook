@@ -1,9 +1,8 @@
-package org.owner.notebook.app.budget;
+package org.owner.notebook.app.budget.web;
 
+import org.owner.notebook.app.budget.BudgetService;
 import org.owner.notebook.app.budget.core.Budget;
 import org.owner.notebook.app.budget.core.BudgetItem;
-import org.owner.notebook.app.budget.core.BudgetItemRequest;
-import org.owner.notebook.app.budget.core.BudgetRequest;
 import org.owner.notebook.domain.request.types.CreateRequest;
 import org.owner.notebook.domain.request.types.DetailsRequest;
 import org.springframework.beans.factory.annotation.Autowired;

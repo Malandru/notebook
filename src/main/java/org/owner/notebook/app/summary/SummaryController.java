@@ -1,6 +1,6 @@
 package org.owner.notebook.app.summary;
 
-import org.owner.notebook.app.budget.core.BudgetRequest;
+import org.owner.notebook.app.budget.web.BudgetRequest;
 import org.owner.notebook.app.summary.core.BudgetSummary;
 import org.owner.notebook.app.summary.core.UserSummary;
 import org.owner.notebook.app.user.core.UserRequest;

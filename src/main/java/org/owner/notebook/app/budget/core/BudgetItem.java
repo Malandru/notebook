@@ -13,10 +13,14 @@ public class BudgetItem extends Transaction
     @JoinColumn(name = "id_budget", nullable = false)
     private Budget budget;
 
-    @Column(name = "month_day", nullable = false)
-    private int monthDay;
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "period_type", nullable = false)
+    private PeriodType periodType;
 
-    @Column(name = "year_date", nullable = false)
+    @Column(name = "month_day", nullable = true)
+    private Integer monthDay;
+
+    @Column(name = "year_date", nullable = true)
     @Temporal(TemporalType.DATE)
     private Date yearDate;
 
@@ -31,12 +35,22 @@ public class BudgetItem extends Transaction
         this.budget = budget;
     }
 
-    public int getMonthDay()
+    public PeriodType getPeriodType()
+    {
+        return periodType;
+    }
+
+    public void setPeriodType(PeriodType periodType)
+    {
+        this.periodType = periodType;
+    }
+
+    public Integer getMonthDay()
     {
         return monthDay;
     }
 
-    public void setMonthDay(int monthDay)
+    public void setMonthDay(Integer monthDay)
     {
         this.monthDay = monthDay;
     }

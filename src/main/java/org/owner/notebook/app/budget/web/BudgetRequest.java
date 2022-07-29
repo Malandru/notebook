@@ -1,4 +1,4 @@
-package org.owner.notebook.app.budget.core;
+package org.owner.notebook.app.budget.web;
 
 import org.owner.notebook.domain.request.types.CreateRequest;
 import org.owner.notebook.domain.request.types.DeleteRequest;

@@ -4,7 +4,7 @@ import org.owner.notebook.app.budget.BudgetService;
 import org.owner.notebook.app.budget.core.Budget;
 import org.owner.notebook.app.budget.core.BudgetItemRepository;
 import org.owner.notebook.app.budget.core.BudgetRepository;
-import org.owner.notebook.app.budget.core.BudgetRequest;
+import org.owner.notebook.app.budget.web.BudgetRequest;
 import org.owner.notebook.app.summary.core.BudgetSummary;
 import org.owner.notebook.app.summary.core.UserSummary;
 import org.owner.notebook.app.user.UserService;

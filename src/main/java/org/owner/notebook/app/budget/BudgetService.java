@@ -1,6 +1,8 @@
 package org.owner.notebook.app.budget;
 
 import org.owner.notebook.app.budget.core.*;
+import org.owner.notebook.app.budget.web.BudgetItemRequest;
+import org.owner.notebook.app.budget.web.BudgetRequest;
 import org.owner.notebook.app.user.UserService;
 import org.owner.notebook.app.user.core.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +50,7 @@ public class BudgetService
 
         BudgetItem budgetItem = new BudgetItem();
         budgetItem.setBudget(budget);
+        budgetItem.setPeriodType(budgetItemRequest.getPeriodType());
         budgetItem.setMonthDay(budgetItemRequest.getMonthDay());
         budgetItem.setYearDate(budgetItemRequest.getYearDate());
 
