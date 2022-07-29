@@ -34,8 +34,8 @@ public class ServerError extends RuntimeException
 
     public ServerError(Exception e) {
         this(
-                "Unknown exception",
-                e.getMessage(),
+                "Unhandled server exception",
+                e.toString(),
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 true,
                 StringUtils.getStackTrace(e));

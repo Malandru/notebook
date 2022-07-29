@@ -9,11 +9,13 @@ public class NotebookErrorControllerAdvice
 {
     @ExceptionHandler(value = ServerError.class)
     public ResponseEntity<ServerError> serverException(ServerError serverError) {
+        serverError.printStackTrace();
         return new ResponseEntity<>(serverError, serverError.getHttpStatus());
     }
 
     @ExceptionHandler(value = Exception.class)
     public ResponseEntity<ServerError> serverException(Exception exception) {
+        exception.printStackTrace();
         ServerError serverError = new ServerError(exception);
         return new ResponseEntity<>(serverError, serverError.getHttpStatus());
     }
