@@ -34,7 +34,7 @@ jobs:
           settings-path: ${{ github.workspace }} # location for the settings.xml file
 
       - name: Build with Maven
-        run:
+        run: |
           mvn install -DskipTests
           ls -lh target/
 
@@ -54,7 +54,7 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: ${{ vars.AWS_ECR_REPOSITORY }}
           IMAGE_TAG: ${{ github.ref_name }}
-        run:
+        run: |
           echo 'building docker image'
           ls -lh target/
           cat ~/.docker/config.json
