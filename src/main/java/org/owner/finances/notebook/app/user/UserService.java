@@ -4,12 +4,12 @@ import org.owner.finances.notebook.app.user.core.Role;
 import org.owner.finances.notebook.app.user.core.User;
 import org.owner.finances.notebook.app.user.core.UserRepository;
 import org.owner.finances.notebook.app.user.core.UserRequest;
-import org.owner.finances.notebook.domain.advice.AdviceProperties;
 import org.owner.finances.notebook.domain.error.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.UUID;
 
 @Service
@@ -48,16 +48,26 @@ public class UserService
     {
         User user = new User();
         user.setUsername(userRequest.getUsername());
-        user.setFullName(userRequest.getFullName());
+        user.setFirstName(userRequest.getFirstName());
+        user.setLastName(userRequest.getLastName());
+        user.setAlias(userRequest.getAlias());
+        user.setLastSessionDate(new Date());
         user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
-        user.addRole(Role.valueOf(userRequest.getRole()));  // TODO: add role validation
+        user.addRole(Role.ROLE_USER);
         return userRepository.save(user);
     }
 
     public User updateUser(UserRequest userRequest)
     {
         User user = findUserOrThrowError(userRequest.getUsername());
-        user.setFullName(userRequest.getFullName());
+        if (isUpdated(user.getFirstName(), userRequest.getFirstName()))
+            user.setFirstName(userRequest.getFirstName());
+        if (isUpdated(user.getLastName(), userRequest.getLastName()))
+            user.setLastName(userRequest.getLastName());
+        if (isUpdated(user.getAlias(), userRequest.getAlias()))
+            user.setAlias(userRequest.getAlias());
+        if (isUpdated(user.getUsername(), userRequest.getUsername()))
+            user.setUsername(user.getUsername());
         return userRepository.save(user);
     }
 
@@ -66,5 +76,10 @@ public class UserService
         User user = findUserOrThrowError(userRequest.getUsername());
         userRepository.delete(user);
         return new User();
+    }
+
+    private boolean isUpdated(String original, String incoming)
+    {
+        return !(incoming == null || incoming.isEmpty() || original.equals(incoming));
     }
 }

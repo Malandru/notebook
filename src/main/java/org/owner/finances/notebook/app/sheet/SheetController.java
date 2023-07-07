@@ -27,7 +27,6 @@ public class SheetController
     {
         System.out.println("Calling testing endpoint");
         User user = new User();
-        user.setFullName("TestName");
         user.setUsername("test");
         user.setPassword("1234");
         return user;

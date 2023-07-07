@@ -7,10 +7,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Entity(name = "users")
@@ -26,7 +23,17 @@ public class User implements UserDetails
     private String username;
 
     @Column(nullable = false)
-    private String fullName;
+    private String firstName;
+
+    @Column(nullable = false)
+    private String lastName;
+
+    @Column(nullable = false)
+    private String alias;
+
+    @Column(name = "last_session", nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Date lastSessionDate;
 
     @Column(nullable = false)
     private String password;
@@ -75,14 +82,44 @@ public class User implements UserDetails
         this.password = password;
     }
 
-    public String getFullName()
+    public String getFirstName()
     {
-        return fullName;
+        return firstName;
     }
 
-    public void setFullName(String fullName)
+    public void setFirstName(String firstName)
     {
-        this.fullName = fullName;
+        this.firstName = firstName;
+    }
+
+    public String getLastName()
+    {
+        return lastName;
+    }
+
+    public void setLastName(String lastName)
+    {
+        this.lastName = lastName;
+    }
+
+    public String getAlias()
+    {
+        return alias;
+    }
+
+    public void setAlias(String alias)
+    {
+        this.alias = alias;
+    }
+
+    public Date getLastSessionDate()
+    {
+        return lastSessionDate;
+    }
+
+    public void setLastSessionDate(Date lastSessionDate)
+    {
+        this.lastSessionDate = lastSessionDate;
     }
 
     public List<Role> getRoles()

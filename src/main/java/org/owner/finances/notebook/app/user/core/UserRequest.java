@@ -14,17 +14,20 @@ public class UserRequest
     @NotNull(groups = {UpdateRequest.class, DeleteRequest.class, DetailsRequest.class})
     private UUID userID;
 
-    @NotEmpty(groups = {CreateRequest.class, UpdateRequest.class})
+    @NotEmpty(groups = {CreateRequest.class})
     private String username;
 
-    @NotEmpty(groups = {CreateRequest.class, UpdateRequest.class})
-    private String fullName;
+    @NotEmpty(groups = {CreateRequest.class})
+    private String firstName;
+
+    @NotEmpty(groups = {CreateRequest.class})
+    private String lastName;
+
+    @NotEmpty(groups = {CreateRequest.class})
+    private String alias;
 
     @NotEmpty(groups = {CreateRequest.class})
     private String password;
-
-    @NotEmpty(groups = {CreateRequest.class, UpdateRequest.class, DeleteRequest.class})
-    private String role;
 
     public UUID getUserID()
     {
@@ -46,14 +49,34 @@ public class UserRequest
         this.username = username;
     }
 
-    public String getFullName()
+    public String getFirstName()
     {
-        return fullName;
+        return firstName;
     }
 
-    public void setFullName(String fullName)
+    public void setFirstName(String firstName)
     {
-        this.fullName = fullName;
+        this.firstName = firstName;
+    }
+
+    public String getLastName()
+    {
+        return lastName;
+    }
+
+    public void setLastName(String lastName)
+    {
+        this.lastName = lastName;
+    }
+
+    public String getAlias()
+    {
+        return alias;
+    }
+
+    public void setAlias(String alias)
+    {
+        this.alias = alias;
     }
 
     public String getPassword()
@@ -64,15 +87,5 @@ public class UserRequest
     public void setPassword(String password)
     {
         this.password = password;
-    }
-
-    public String getRole()
-    {
-        return role;
-    }
-
-    public void setRole(String role)
-    {
-        this.role = role;
     }
 }
